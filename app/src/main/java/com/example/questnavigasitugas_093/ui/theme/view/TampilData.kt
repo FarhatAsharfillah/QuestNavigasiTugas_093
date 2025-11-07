@@ -29,3 +29,9 @@ fun TampilData(
                 colors = TopAppBarDefaults
                     .mediumTopAppBarColors(colorResource(id=R.color.teal_700))
             )
+        }){ isiRuang ->
+        Column (modifier = Modifier.padding(isiRuang),
+            verticalArrangement = Arrangement.SpaceBetween){
+            Column (modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium)),
+                verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_small))){
+                items.forEach {item ->
