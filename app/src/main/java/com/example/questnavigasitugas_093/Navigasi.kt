@@ -1,6 +1,5 @@
 package com.example.questnavigasitugas_093
 
-
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -9,10 +8,14 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.example.questnavigasitugas_093.ui.theme.view.Beranda
 import com.example.questnavigasitugas_093.ui.theme.view.FormIsian
 import com.example.questnavigasitugas_093.ui.theme.view.TampilData
 
+// Enum untuk daftar screen
 enum class Navigasi {
+    Beranda,
     Formulirku,
     Detail
 }
@@ -20,38 +23,48 @@ enum class Navigasi {
 @Composable
 fun DataApp(
     navController: NavHostController = rememberNavController(),
-    modifier: Modifier
+    modifier: Modifier = Modifier
 ) {
     Scaffold { isiRuang ->
         NavHost(
             navController = navController,
-            startDestination = Navigasi.Formulirku.name,
-
-            modifier = Modifier.padding( isiRuang)
+            startDestination = Navigasi.Beranda.name,
+            modifier = Modifier.padding(isiRuang)
         ) {
-            composable(route = Navigasi.Formulirku.name){
-                FormIsian(
-                    //pilihanJK = pilihanJK.map { id -> context.resources.getString(id) },
-                    OnSubmitBtnClick = {
-                        navController.navigate(Navigasi.Detail.name)
-                    }
 
+            composable(Navigasi.Beranda.name) {
+                Beranda(
+                    onSubmitClick = {
+                        navController.navigate(Navigasi.Formulirku.name)
+                    }
                 )
             }
-            composable(route = Navigasi.Detail.name){
+
+
+            composable(Navigasi.Formulirku.name) {
+                FormIsian(navController = navController)
+            }
+
+
+            composable(
+                route = "Detail/{nama}/{jenisKelamin}/{alamat}",
+                arguments = listOf(
+                    navArgument("nama") { defaultValue = "" },
+                    navArgument("jenisKelamin") { defaultValue = "" },
+                    navArgument("alamat") { defaultValue = "" }
+                )
+            ) { backStackEntry ->
+                val nama = backStackEntry.arguments?.getString("nama")
+                val jenisKelamin = backStackEntry.arguments?.getString("jenisKelamin")
+                val alamat = backStackEntry.arguments?.getString("alamat")
+
                 TampilData(
-                    onBackBtnClick = {
-                        cancelAndBackToFormulirku(navController)
-                    }
+                    navController = navController,
+                    nama = nama,
+                    jenisKelamin = jenisKelamin,
+                    alamat = alamat
                 )
             }
         }
     }
-}
-
-private fun cancelAndBackToFormulirku(
-    navController: NavHostController
-){
-    navController.popBackStack(Navigasi.Formulirku.name,
-        inclusive = false)
 }
