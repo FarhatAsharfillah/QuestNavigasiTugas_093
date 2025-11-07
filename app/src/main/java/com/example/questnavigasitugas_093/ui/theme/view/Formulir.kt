@@ -33,3 +33,8 @@ fun FormIsian(
     jenisK: List<String> = listOf("Laki-Laki", "Perempuan"),
     OnSubmitBtnClick : () -> Unit
 ){
+}
+
+private fun cancelAndBackToFormulirku(
+    navController: NavHostController
+){
