@@ -23,4 +23,12 @@ fun Beranda(
             .padding(24.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(text = "Selamat Datang", fontSize = 28.sp)
+        Spacer(modifier = Modifier.height(24.dp))
+        Image(
+            painter = painterResource(id = R.drawable.planet),
+            contentDescription = "Logo",
+            modifier = Modifier.size(180.dp),
+            contentScale = ContentScale.Fit
 
