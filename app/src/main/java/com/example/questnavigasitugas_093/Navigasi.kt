@@ -9,6 +9,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.questnavigasitugas_093.ui.theme.view.FormIsian
+import com.example.questnavigasitugas_093.ui.theme.view.TampilData
 
 enum class Navigasi {
     Formulirku,
@@ -30,28 +32,26 @@ fun DataApp(
             composable(route = Navigasi.Formulirku.name){
                 FormIsian(
                     //pilihanJK = pilihanJK.map { id -> context.resources.getString(id) },
-                    onSubmitBtnClick ={
+                    OnSubmitBtnClick = {
                         navController.navigate(Navigasi.Detail.name)
-
                     }
 
                 )
-                composable(route = Navigasi.Detail.name){
-                    TampilData(
-                        onBackBtnClick = {
-                            cancelAndBackToFormulirku(navController)
-                            )
             }
-
+            composable(route = Navigasi.Detail.name){
+                TampilData(
+                    onBackBtnClick = {
+                        cancelAndBackToFormulirku(navController)
+                    }
+                )
+            }
         }
     }
 }
-    }
 
-    private fun cancelAndBackToFormulirku(
-        navController: NavHostController
-    ){
-
-        navController.popBackStack(Navigasi.Formulirku.name,
-            inclusive = false)
-    }
+private fun cancelAndBackToFormulirku(
+    navController: NavHostController
+){
+    navController.popBackStack(Navigasi.Formulirku.name,
+        inclusive = false)
+}

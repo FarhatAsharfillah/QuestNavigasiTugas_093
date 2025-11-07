@@ -33,67 +33,64 @@ fun FormIsian(
     jenisK: List<String> = listOf("Laki-Laki", "Perempuan"),
     OnSubmitBtnClick : () -> Unit
 ){
-
-
-Scaffold (modifier = Modifier,
-{
-    TopAppBar(
-        title = { Text(stringResource(id= R.string.home),
-            color = Color.White)},
-        colors = TopAppBarDefaults.topAppBarColors
-            (colorResource(id = R.color.teal_700))
-    )}
-){ isiRuang ->
-    Column(modifier = Modifier.padding(isiRuang),
-        verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.CenterHorizontally)
-    {
-
-        OutlinedTextField(
-            value = "",
-            singleLine = true,
-            modifier = Modifier
-                .padding(top = 20.dp)
-                .width(250.dp),
-            label = {Text(text = "Nama Lengkap")},
-            onValueChange = {},
-        )
-        HorizontalDivider(modifier = Modifier
-            .padding(20.dp)
-            .width(250.dp), thickness = Thickness, color = Color.Red)
-        Row {
-            jenisK.forEach {
-                    item->
-                Row(verticalAlignment = Alignment.CenterVertically){
-                    RadioButton(
-                        selected = false,
-                        onClick = {item}
-                    )
-                    Text(text = item)
+    Scaffold (modifier = Modifier,
+        {
+            TopAppBar(
+                title = { Text(stringResource(id= R.string.home),
+                    color = Color.White)},
+                colors = TopAppBarDefaults.topAppBarColors
+                    (colorResource(id = R.color.teal_700))
+            )}
+    ){ isiRuang ->
+        Column(modifier = Modifier.padding(isiRuang),
+            verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.CenterHorizontally)
+        {
+            OutlinedTextField(
+                value = "",
+                singleLine = true,
+                modifier = Modifier
+                    .padding(top = 20.dp)
+                    .width(250.dp),
+                label = {Text(text = "Nama Lengkap")},
+                onValueChange = {},
+            )
+            HorizontalDivider(modifier = Modifier
+                .padding(20.dp)
+                .width(250.dp), thickness = Thickness, color = Color.Red)
+            Row {
+                jenisK.forEach {
+                        item->
+                    Row(verticalAlignment = Alignment.CenterVertically){
+                        RadioButton(
+                            selected = false,
+                            onClick = {item}
+                        )
+                        Text(text = item)
+                    }
                 }
             }
-        }
-        HorizontalDivider(modifier = Modifier
-            .padding(20.dp)
-            .width(250.dp),
-            thickness = 1.dp,
-            color = Color.Red
-        )
-        OutlinedTextField(
-            value = "",
-            singleLine = true,
-            modifier = Modifier
+            HorizontalDivider(modifier = Modifier
+                .padding(20.dp)
                 .width(250.dp),
-            label = {Text(text = "Alamat")},
-            onValueChange = {},
-        )
-        Spacer(modifier = Modifier.height(30.dp))
-        Button(
-            modifier = Modifier.fillMaxWidth(1f),
-            onClick = OnSubmitBtnClick
-        ){
-            Text(stringResource(id = R.string.submit))
+                thickness = 1.dp,
+                color = Color.Red
+            )
+            OutlinedTextField(
+                value = "",
+                singleLine = true,
+                modifier = Modifier
+                    .width(250.dp),
+                label = {Text(text = "Alamat")},
+                onValueChange = {},
+            )
+            Spacer(modifier = Modifier.height(30.dp))
+            Button(
+                modifier = Modifier.fillMaxWidth(1f),
+                onClick = OnSubmitBtnClick
+            ){
+                Text(stringResource(id = R.string.submit))
+            }
         }
     }
-}
 }
