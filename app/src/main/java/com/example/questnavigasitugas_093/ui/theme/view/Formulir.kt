@@ -43,3 +43,8 @@ Scaffold (modifier = Modifier,
         colors = TopAppBarDefaults.topAppBarColors
             (colorResource(id = R.color.teal_700))
     )}
+){ isiRuang ->
+    Column(modifier = Modifier.padding(isiRuang),
+        verticalArrangement = Arrangement.Top,
+        horizontalAlignment = Alignment.CenterHorizontally)
+    {
