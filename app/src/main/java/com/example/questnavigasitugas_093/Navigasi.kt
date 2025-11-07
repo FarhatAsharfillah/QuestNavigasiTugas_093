@@ -27,3 +27,17 @@ fun DataApp(
 
             modifier = Modifier.padding( isiRuang)
         ) {
+            composable(route = Navigasi.Formulirku.name){
+                FormIsian(
+                    //pilihanJK = pilihanJK.map { id -> context.resources.getString(id) },
+                    onSubmitBtnClick ={
+                        navController.navigate(Navigasi.Detail.name)
+
+                    }
+
+                )
+            }
+
+        }
+    }
+}
