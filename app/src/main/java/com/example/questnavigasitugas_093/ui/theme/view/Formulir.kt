@@ -33,11 +33,13 @@ fun FormIsian(
     jenisK: List<String> = listOf("Laki-Laki", "Perempuan"),
     OnSubmitBtnClick : () -> Unit
 ){
-}
 
-private fun cancelAndBackToFormulirku(
-    navController: NavHostController
-){
-    navController.popBackStack(Navigasi.Formulirku.name,
-        inclusive = false)
-}
+
+Scaffold (modifier = Modifier,
+{
+    TopAppBar(
+        title = { Text(stringResource(id= R.string.home),
+            color = Color.White)},
+        colors = TopAppBarDefaults.topAppBarColors
+            (colorResource(id = R.color.teal_700))
+    )}
