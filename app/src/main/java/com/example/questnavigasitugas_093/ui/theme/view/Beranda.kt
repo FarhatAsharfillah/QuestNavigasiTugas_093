@@ -16,4 +16,11 @@ import com.example.questnavigasitugas_093.R
 @Composable
 fun Beranda(
     onSubmitClick: () -> Unit
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(24.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
 
